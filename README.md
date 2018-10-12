@@ -13,13 +13,13 @@ Instaleaza git: https://git-scm.com/
 Intr-un folder pe computer scrie `git init` si dupa `git clone https://github.com/andrei91simon/indoo.git`
 
 ## Inregistreaza env variables
-Pe mac:
-`export export MONGO_PASSWORD=parola`
-`export S3_ACCESS_KEY_ID=cheia`
-`export S3_SECRET_ACCESS_KEY=cheiasecreta`
+Pe mac:  
+`export export MONGO_PASSWORD=parola`  
+`export S3_ACCESS_KEY_ID=cheia`  
+`export S3_SECRET_ACCESS_KEY=cheiasecreta`  
 
-Pe windows:
-`setx MONGO_PASSWORD parola`
+Pe windows:  
+`setx MONGO_PASSWORD parola`  
 etc
 
 ## Instaleaza dependencies
@@ -32,5 +32,4 @@ In folderul de baza scrie `npm run server` `npm start` in terminale diferite
 http://localhost:4200
 
 ## Oricand vrei sa pornesti site-ul
-In folderul de baza scrie `npm run server` `npm start` in terminale diferite
- Deschide http://localhost:4200
+In folderul de baza scrie `npm run server` `npm start` in terminale diferite si deschide http://localhost:4200
