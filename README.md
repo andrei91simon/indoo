@@ -26,8 +26,7 @@ etc
 Dupa ce se descarca, dai cd in folderul de baza si scrie `npm install`
 
 ## Porneste serverul si site-ul
-`npm run server`
-`npm start` in terminale diferite
+In folderul de baza scrie `npm run server` `npm start` in terminale diferite
 
 ## Deschide browserul
 `http://localhost:4200`
