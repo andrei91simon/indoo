@@ -1,0 +1,74 @@
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
+
+.main {
+	margin: 0 auto;
+	max-width: 500px;
+	padding: 100px 30px 0 30px;
+	text-align: center;
+}
+
+.logo {
+	width: 70px;
+	height: 50px;
+}
+
+h1 {
+	padding-bottom: 50px;
+}
+
+.label {
+	display: none;
+}
+
+input {
+	margin-bottom: 10px;
+}
+
+::ng-deep {
+  .sortable-wrapper {
+    width: 100%;
+  }
+
+  .image-placeholder {
+    height: 100px;
+    background-color: white;
+    border: 2px solid #bbb;
+    border-radius: 5px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.thumbnail-image {
+  height: 100px;
+  width: 100px;
+}
+
+.photos {
+  @include media-breakpoint-down(sm) {
+    display: none;
+  }
+}
+
+.photos-phone {
+    @include media-breakpoint-up(sm) {
+    display: none;
+  }
+}
+
+.close-button {
+  position: absolute;
+  z-index: 4;
+  color: $white;
+  padding-left: 5px;
+  padding-top: 8px;
+}
+
+.close-x {
+  height: 15px;
+  width: 15px;
+}

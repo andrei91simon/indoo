@@ -1,0 +1,4 @@
+<div class="d-flex mt-5">
+	<button class="btn btn-secondary m-auto" *ngIf="!auth.isAuthenticated()" (click)="auth.login()">Login</button>
+	<button class="btn btn-secondary m-auto" *ngIf="auth.isAuthenticated()" (click)="auth.logout()">Logout</button>
+</div>

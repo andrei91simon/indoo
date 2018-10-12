@@ -1,0 +1,141 @@
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
+
+.main {
+	width: 98vw;
+	height: 98vh;
+	padding: 20px 0px 0px 20px;
+	justify-content: space-between;
+
+	@include media-breakpoint-down(sm) {
+		flex-direction: column;
+		width: 100%;
+		height: 100%;
+	}
+}
+
+.large-menu {
+	justify-content: space-between;
+	width: 100%;
+	padding-right: 20px;
+}
+
+.links {
+	@include media-breakpoint-down(sm) {
+		flex-direction: row !important;
+	}
+}
+
+.separator {
+	display: none;
+	@include media-breakpoint-down(sm) {
+		display: unset;
+	}
+}
+
+.large-image {
+	max-width: 80vw;
+	max-height: 95vh;
+
+	@include media-breakpoint-down(sm) {
+		max-height: 100%;
+		max-width: 100%;
+	}
+}
+
+.social-image {
+	max-height: 15px;
+	max-width: 15px;
+}
+
+.logo {
+	max-width: 70px;
+	max-height: 40px;
+}
+
+.logo-links {
+	justify-content: space-between;
+	margin-top: 0px;
+
+	@include media-breakpoint-down(md) {
+		flex-direction: column;
+		height: 250px;
+		margin: 0 auto;
+	}
+
+	@include media-breakpoint-down(sm) {
+		flex-direction: row;
+		height: 100%;
+		margin: 0;
+	}
+}
+
+.copyright-social {
+	justify-content: space-between;
+	margin-bottom: 5px;
+	font-size: 9px;
+
+	@include media-breakpoint-down(md) {
+		flex-direction: column;
+		height: 50px;
+		margin: 0 auto;
+		flex-direction: column-reverse;
+	}
+
+	@include media-breakpoint-down(sm) {
+		display: none !important;
+		flex-direction: row;
+		height: 100%;
+		margin: 0;
+	}
+}
+
+.copyright {
+	@include media-breakpoint-down(md) {
+		padding-left: 20px;
+	}
+
+	@include media-breakpoint-down(sm) {
+		padding-left: 0;
+	} 
+}
+
+.social {
+	width: 100px;
+	justify-content: space-around;
+}
+
+.copyright-symbol {
+	max-height: 7px;
+	max-width: 7px;
+}
+
+.phone-styles {
+	height: 100%;
+	justify-content: space-between;
+}
+
+.social-phone {
+	display: none !important;
+	justify-content: space-between;
+
+	@include media-breakpoint-down(sm) {
+		display: unset !important;
+	}
+}
+
+.copyright-phone {
+	display: none;
+	align-self: bottom;
+	padding: auto;
+	padding-bottom: 20px;
+
+	@include media-breakpoint-down(sm) {
+		display: unset;
+	}
+}
+
+a {
+	color: black;
+}

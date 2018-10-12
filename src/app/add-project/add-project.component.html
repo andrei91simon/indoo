@@ -1,0 +1,35 @@
+<div class="main" appDragDrop (dropHandler)="onDropHandler($event)">
+	<img class="logo" src="assets/indoo.design/logo.png" routerLink="/">
+	<h1>Add a project</h1>
+	<form #form="ngForm">
+		<div class="form form-group d-flex flex-column">
+			<label class="form-control label">Title</label>
+			<input [(ngModel)]="project.title" class="form-control" type="text" name="title" placeholder="Title">
+			<label class="form-control label">Category</label>
+			<input [(ngModel)]="project.category" class="form-control" type="text" name="category"  placeholder="Category">
+			<label class="form-control label">Location</label>
+			<input [(ngModel)]="project.location" class="form-control" type="text" name="location" placeholder="Location">
+			<label class="form-control label">Area</label>
+			<input [(ngModel)]="project.area" class="form-control" type="number" name="area" placeholder="Area">
+			<label class="form-control label">Status</label>
+			<input [(ngModel)]="project.status" class="form-control" type="text" name="status" placeholder="Status">
+			<label class="form-control label">Photos</label>
+			<ng-template #itemTemplate let-item="item" let-index="index">
+				<span class="close-button" (click)="removePhoto(index)">
+					<img class="close-x" src="assets/indoo.design/icons/error.png">
+				</span>
+				<img class="thumbnail-image mt-2 mr-2" src="{{item.value.preview}}">
+			</ng-template>
+			<div class="photos" name="projectImage">
+				<bs-sortable class="d-flex flex-wrap" [(ngModel)]="previewPhotos" name="photos" [itemTemplate]="itemTemplate" itemClass="sortable-item" itemActiveClass="sortable-item-active" placeholderItem="Drop Photos" placeholderClass="image-placeholder"wrapperClass="sortable-wrapper d-flex flex-wrap" (onChange)="reorderImages($event)"> 
+				</bs-sortable>
+			</div>
+
+			<div class="custom-file photos-phone">
+	  		<input type="file" class="custom-file-input" id="customFile">
+	  		<label class="custom-file-label" for="customFile">Choose photo</label>
+			</div>
+			<button class="btn btn-primary mt-4" type="submit" (click)="saveProject()">Submit</button>
+		</div>
+	</form>
+</div>
