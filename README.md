@@ -14,12 +14,12 @@ Intr-un folder pe computer scrie `git init` si dupa `git clone https://github.co
 
 ## Inregistreaza env variables
 Pe mac:
-export export MONGO_PASSWORD=parola
-export S3_ACCESS_KEY_ID=cheia
-export S3_SECRET_ACCESS_KEY=cheiasecreta
+`export export MONGO_PASSWORD=parola`
+`export S3_ACCESS_KEY_ID=cheia`
+`export S3_SECRET_ACCESS_KEY=cheiasecreta`
 
 Pe windows:
-setx MONGO_PASSWORD parola
+`setx MONGO_PASSWORD parola`
 etc
 
 ## Instaleaza dependencies
@@ -30,4 +30,4 @@ Dupa ce se descarca, dai cd in folderul de baza si scrie `npm install`
 `npm start`
 
 ## Deschide browserul
-http://localhost:4200
+`http://localhost:4200`
