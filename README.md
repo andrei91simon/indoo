@@ -2,26 +2,32 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.3.
 
-## Development server
+## Node
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Instaleaza node: https://nodejs.org/en/
 
-## Code scaffolding
+## Git
+Instaleaza git: https://git-scm.com/
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+##Cloneaza repository-ul asta
+Intr-un folder pe computer scrie `git init` si dupa `git clone https://github.com/andrei91simon/indoo.git`
 
-## Build
+##Inregistreaza env variables
+Pe mac:
+export export MONGO_PASSWORD=parola
+export S3_ACCESS_KEY_ID=cheia
+export S3_SECRET_ACCESS_KEY=cheiasecreta
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+Pe windows:
+setx MONGO_PASSWORD parola
+etc
 
-## Running unit tests
+##Instaleaza dependencies
+Dupa ce se descarca, dai cd in folderul de baza si scrie `npm install`
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+##Porneste serverul si site-ul
+`npm run server`
+`npm start`
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+##Deschide browserul
+http://localhost:4200
