@@ -32,7 +32,6 @@ export class ProjectViewComponent implements OnInit {
   ngOnInit() {
     this.route.params.switchMap(params => this.projectService.getProjectById(params.id))
     .subscribe(project => this.project = project);
-   
   }
 
   changeImage(newSrc) {

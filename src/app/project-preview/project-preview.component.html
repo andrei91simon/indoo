@@ -1,5 +1,9 @@
 <div class="main d-flex flex-column">
-	<img src="{{project.image}}">
+	<img src="{{project.image}}" routerLink="/projects/{{project._id}}">
+	<div *ngIf="auth.isAuthenticated()" class="d-flex overlay">
+		<img class="menu-buttons" routerLink="/add/{{project._id}}" src="assets/indoo.design/icons/edit.png">
+		<img class="menu-buttons" (click)="deleteProject()" src="assets/indoo.design/icons/rubbish-bin.png">
+	</div>
 	<div class="category mt-1">
 		{{project.category}}
 	</div>

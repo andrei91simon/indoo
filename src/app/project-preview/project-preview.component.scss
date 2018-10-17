@@ -4,6 +4,7 @@
 
 .main {
 	font-size: 0.8vw;
+	position: relative;
 	@include media-breakpoint-down(sm) {
 		font-size: 10px;
 	}
@@ -19,3 +20,30 @@ img {
 	}
 }
 
+
+/* The overlay effect - lays on top of the container and over the image */
+.overlay {
+  position: absolute; 
+  bottom: 50; 
+  background: rgb(0, 0, 0);
+  background: rgba(0, 0, 0, 0.5); /* Black see-through */
+  color: #f1f1f1; 
+  width: 100%;
+  transition: .5s ease;
+  opacity:0;
+  color: white;
+  font-size: 20px;
+  padding: 20px;
+  text-align: center;
+  justify-content: space-between;
+}
+
+/* When you mouse over the container, fade in the overlay title */
+.main:hover .overlay {
+  opacity: 1;
+}
+
+.menu-buttons {
+	width: 24px;
+	height: 24px;
+}

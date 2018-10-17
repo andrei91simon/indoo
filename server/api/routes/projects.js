@@ -128,11 +128,9 @@ router.get('/:projectId', (req, res, next) => {
 
 router.patch('/:projectId', (req, res, next) => {
 	const id = req.params.projectId;
-	const updateOps = {};
-	for(const ops of req.body) {
-		updateOps[ops.propName] = ops.value;
-	}
-	Project.update({_id: id}, { $set: updateOps })
+	const props = req.body;
+	console.log(props);
+	Project.update({_id: id}, props)
 	.exec()
 	.then(result => {
 		console.log(result);

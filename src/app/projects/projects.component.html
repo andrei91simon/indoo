@@ -19,7 +19,7 @@
 			<button *ngIf="auth.isAuthenticated()" class="btn btn-secondary ml-5 add-button" routerLink="/add">Add Project</button>
 		</div>
 		<div class="preview d-flex flex-wrap">
-			<app-project-preview *ngFor="let project of projects | async" [project]="project" routerLink="/projects/{{project._id}}"></app-project-preview>
+			<app-project-preview *ngFor="let project of projects | async" [project]="project"></app-project-preview>
 		</div>
 		<div class="d-flex social mt-auto">
 			<img class="social-image" src="assets/indoo.design/icons/facebook.png">

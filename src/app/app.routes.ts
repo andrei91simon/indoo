@@ -11,6 +11,7 @@ export const appRoutes: Routes = [
   { path: 'projects', component: ProjectsComponent },
   { path: 'projects/:id', component: ProjectViewComponent },
   { path: 'add', component: AddProjectComponent },
+  { path: 'add/:id', component: AddProjectComponent },
   { path: 'login', component: LoginComponent },
   { path: 'callback', component: CallbackComponent },
   { path: '**', redirectTo: '' }
