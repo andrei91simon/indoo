@@ -76,7 +76,7 @@
 }
 
 .top-menu {
-	padding-left: 10px;
+	padding-left: 0px;
 
 	@include media-breakpoint-down(sm) {
 		display: none;
