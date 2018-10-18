@@ -4,10 +4,10 @@
 		<img class="menu-buttons" routerLink="/add/{{project._id}}" src="assets/indoo.design/icons/edit.png">
 		<img class="menu-buttons" (click)="deleteProject()" src="assets/indoo.design/icons/rubbish-bin.png">
 	</div>
-	<div class="category mt-1">
+	<div class="category mt-2 titleclass">
 		{{project.category}}
 	</div>
-	<div class="details mt-1">
+	<div class="details mt-1 description">
 		<p>Location: {{project.location}} | Area: {{project.area}} | Status: {{project.status}}</p>
 	</div>
 </div>
