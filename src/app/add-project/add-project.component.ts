@@ -1,11 +1,11 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { Project } from '../../model/project';
-import { ProjectService } from "../project.service";
+import { ProjectService } from '../project.service';
 import { SortableComponent } from 'ngx-bootstrap/sortable';
 import { Observable } from 'rxjs';
 import { Subscription } from 'rxjs';
 import { each } from 'lodash';
-import { NgForm } from "@angular/forms";
+import { NgForm } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 
@@ -36,7 +36,7 @@ export class AddProjectComponent implements OnInit {
 
   loadProject() {
     this.route.params.subscribe((params: Params) => {
-      if(params.id) {
+      if (params.id) {
         this.busy = this.service.getProjectById(params.id).subscribe((project: Project) => {
           this.project = project;
         });
@@ -46,41 +46,46 @@ export class AddProjectComponent implements OnInit {
 
   saveProject(): void {
     let formData = new FormData();
-    if(this.project._id) {
+    if (this.project._id) {
       for (let p of this.previewPhotos) {
-        this.project.photoUrls.push("https://s3.amazonaws.com/indoodesign/" + p.file.name);
+        this.project.photoUrls.push('https://s3.amazonaws.com/indoodesign/' + p.file.name);
         formData.set('photo', p.file);
         this.http.post<boolean>(`http://localhost:3000/projects/uploadPhoto`, formData).subscribe();
       }
       let payload = {
-        "title": this.project.title,
-        "category": this.project.category,
-        "location": this.project.location,
-        "area": this.project.area,
-        "status": this.project.status,
-        "image": this.project.image,
-        "photoUrls": this.project.photoUrls,
+        'title': this.project.title,
+        'category': this.project.category,
+        'location': this.project.location,
+        'area': this.project.area,
+        'status': this.project.status,
+        'image': this.project.photoUrls[0],
+        'photoUrls': this.project.photoUrls,
       };
       this.http.patch<Project>(`http://localhost:3000/projects/${this.project._id}`, payload).subscribe((project: Project) => {
-        this.router.navigate(['/projects']);
+          window.location.reload();
       });
       return;
     }
     this.project.photoUrls = [];
 
     for (let p of this.previewPhotos) {
-      this.project.photoUrls.push("https://s3.amazonaws.com/indoodesign/" + p.file.name);
+      this.project.photoUrls.push('https://s3.amazonaws.com/indoodesign/' + p.file.name);
       formData.set('photo', p.file);
       this.http.post<boolean>(`http://localhost:3000/projects/uploadPhoto`, formData).subscribe();
     }
     this.project.image = this.project.photoUrls[0];
     for (let p of this.previewPhotos) {
-      this.http.post<string>(`http://localhost:3000/projects/uploadToS3`, {"filename": p.file.name}).subscribe();
+      this.http.post<string>(`http://localhost:3000/projects/uploadToS3`, {'filename': p.file.name}).subscribe();
     }
     this.http.post<Project>(`http://localhost:3000/projects`, this.project).subscribe((project: Project) => {
       this.project._id = project._id;
-      this.router.navigate(['/projects']);
+      window.location.reload();
     });
+  }
+
+  saveAndClose() {
+    this.saveProject();
+    this.router.navigate(['/projects']);
   }
 
   onDropHandler(event: any): void {
@@ -118,5 +123,18 @@ export class AddProjectComponent implements OnInit {
     // fired when image 'x' is clicked
     this.previewPhotos.splice(i, 1);
     this.sortableComponent.writeValue(this.previewPhotos);
+  }
+
+  reorderExistingImages(photoUrls: string[]): void {
+    // fired when images are moved
+    this.project.photoUrls = photoUrls;
+    console.log(this.project.photoUrls);
+  }
+
+  removeExistingPhoto(i: number): void {
+    // fired when image 'x' is clicked
+    this.project.photoUrls.splice(i, 1);
+    console.log(this.project.photoUrls);
+    this.project.photoUrls = [...this.project.photoUrls];
   }
 }
