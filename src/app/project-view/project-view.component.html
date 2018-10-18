@@ -7,24 +7,23 @@
 		<div class="pictures d-flex flex-column pr-3">
 			<img *ngFor="let picture of project.photoUrls" (click)="changeImage(picture)" class="small-picture mb-3" src="{{picture}}">
 		</div>
-		<div class="copyright pt-5">
-			<img class="copyright-symbol" src="assets/indoo.design/icons/copyright-symbol.png">
-			indoo.design
+		<div class="copyright">
+			<p>© indoo.design</p>
 		</div>
 	</div>
 	<div class="right-side d-flex flex-column">
 		<div class="top-menu d-flex">
-			<span class="navigation-menu">
+			<span class="navigation-menu titleclass">
 				<span routerLink="/">HOME</span>
 				<span class="separator">&nbsp;-&nbsp;</span>
 				<span routerLink="/projects">PROJECTS</span>
 				<span class="separator">&nbsp;-&nbsp;</span>
 				<span>APARTAMENT 028</span>
 			</span>
-			<span class="photos-menu pr-4"> photos | renderings | all </span>
+			<span class="photos-menu pr-4 titleclass2"> photos | renderings | all </span>
 		</div>
 		<div class="large-image pt-4 pl-3 pr-3 pb-3 align-self-end">
-			<img class="large-image pr-3" src="{{project.image}}">
+			<img class="large-image pr-2" src="{{project.image}}">
 			<div class="social d-flex pt-3">
 				<img class="social-image" src="assets/indoo.design/icons/facebook.png">
 				<img class="social-image" src="assets/indoo.design/icons/instagram.png">

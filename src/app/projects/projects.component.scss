@@ -40,7 +40,6 @@
 .logo {
 	max-width: 70px;
 	max-height: 40px;
-	
 	@include media-breakpoint-down(sm) {
 		padding-top: 20px;
 	}
@@ -103,7 +102,7 @@
 }
 
 ::-webkit-scrollbar {
-  width: 3px;
+  width: 2px;
 }
 
 ::-webkit-scrollbar-track {
