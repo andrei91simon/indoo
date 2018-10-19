@@ -20,6 +20,7 @@ export class AddProjectComponent implements OnInit {
   project: Project = {};
   previewPhotos: {file: File, preview?: string, index: number}[];
   busy: Subscription;
+  closeOnSave: boolean = false;
 
   @ViewChild(SortableComponent) sortableComponent: SortableComponent;
 
@@ -44,7 +45,7 @@ export class AddProjectComponent implements OnInit {
     });
   }
 
-  saveProject(): void {
+  saveProject(): Promise<boolean> {
     let formData = new FormData();
     if (this.project._id) {
       for (let p of this.previewPhotos) {
@@ -62,7 +63,9 @@ export class AddProjectComponent implements OnInit {
         'photoUrls': this.project.photoUrls,
       };
       this.http.patch<Project>(`http://localhost:3000/projects/${this.project._id}`, payload).subscribe((project: Project) => {
+        if (!this.closeOnSave) {
           window.location.reload();
+        }
       });
       return;
     }
@@ -74,16 +77,23 @@ export class AddProjectComponent implements OnInit {
       this.http.post<boolean>(`http://localhost:3000/projects/uploadPhoto`, formData).subscribe();
     }
     this.project.image = this.project.photoUrls[0];
-    for (let p of this.previewPhotos) {
+  /*  for (let p of this.previewPhotos) {
       this.http.post<string>(`http://localhost:3000/projects/uploadToS3`, {'filename': p.file.name}).subscribe();
-    }
+    } */
     this.http.post<Project>(`http://localhost:3000/projects`, this.project).subscribe((project: Project) => {
       this.project._id = project._id;
-      window.location.reload();
+      for (let p of this.previewPhotos) {
+        this.http.post<string>(`http://localhost:3000/projects/uploadToS3`, {'filename': p.file.name}).subscribe();
+      }
+      if (!this.closeOnSave) {
+        window.location.reload();
+      }
     });
+    return new Promise(resolve => true);
   }
 
   saveAndClose() {
+    this.closeOnSave = true;
     this.saveProject();
     this.router.navigate(['/projects']);
   }
