@@ -48,11 +48,6 @@ export class AddProjectComponent implements OnInit {
   saveProject(): Promise<boolean> {
     let formData = new FormData();
     if (this.project._id) {
-      for (let p of this.previewPhotos) {
-        this.project.photoUrls.push('https://s3.amazonaws.com/indoodesign/' + p.file.name);
-        formData.set('photo', p.file);
-        this.http.post<boolean>(`http://localhost:3000/projects/uploadPhoto`, formData).subscribe();
-      }
       let payload = {
         'title': this.project.title,
         'category': this.project.category,
@@ -62,9 +57,24 @@ export class AddProjectComponent implements OnInit {
         'image': this.project.photoUrls[0],
         'photoUrls': this.project.photoUrls,
       };
-      this.http.patch<Project>(`http://localhost:3000/projects/${this.project._id}`, payload).subscribe((project: Project) => {
-        if (!this.closeOnSave) {
-          window.location.reload();
+      for (let p of this.previewPhotos) {
+        this.project.photoUrls.push('https://s3.amazonaws.com/indoodesign/' + p.file.name);
+        formData.append('photos', p.file);
+      }
+      this.http.post<boolean>(`http://localhost:3000/projects/uploadToS3`, formData).subscribe(x => {
+        console.log("this is x", x);
+        if (x) {
+          this.http.patch<Project>(`http://localhost:3000/projects/${this.project._id}`, payload).subscribe((project: Project) => {
+            if (!this.closeOnSave) {
+              this.previewPhotos = [];
+              this.loadProject();
+            } else {
+              this.router.navigate(['/projects']);
+            }
+          });
+          return;
+        } else {
+          console.log('Project could not be loaded at this time');
         }
       });
       return;
@@ -73,29 +83,31 @@ export class AddProjectComponent implements OnInit {
 
     for (let p of this.previewPhotos) {
       this.project.photoUrls.push('https://s3.amazonaws.com/indoodesign/' + p.file.name);
-      formData.set('photo', p.file);
-      this.http.post<boolean>(`http://localhost:3000/projects/uploadPhoto`, formData).subscribe();
+      formData.append('photos', p.file);
     }
-    this.project.image = this.project.photoUrls[0];
-  /*  for (let p of this.previewPhotos) {
-      this.http.post<string>(`http://localhost:3000/projects/uploadToS3`, {'filename': p.file.name}).subscribe();
-    } */
-    this.http.post<Project>(`http://localhost:3000/projects`, this.project).subscribe((project: Project) => {
-      this.project._id = project._id;
-      for (let p of this.previewPhotos) {
-        this.http.post<string>(`http://localhost:3000/projects/uploadToS3`, {'filename': p.file.name}).subscribe();
+    console.log('this is the formdata', formData);
+    this.http.post<boolean>(`http://localhost:3000/projects/uploadToS3`, formData).subscribe(x => {
+      console.log('this is x', x);
+      if (x) {
+        this.project.image = this.project.photoUrls[0];
+        this.http.post<Project>(`http://localhost:3000/projects`, this.project).subscribe((project: Project) => {
+          this.project._id = project._id;
+          if (!this.closeOnSave) {
+            this.loadProject();
+          } else {
+            this.router.navigate(['/projects']);
+          }
+        });
+      } else {
+        console.log('Project could not be loaded at this time');
       }
-      if (!this.closeOnSave) {
-        window.location.reload();
-      }
-    });
+    }); 
     return new Promise(resolve => true);
   }
 
   saveAndClose() {
     this.closeOnSave = true;
     this.saveProject();
-    this.router.navigate(['/projects']);
   }
 
   onDropHandler(event: any): void {

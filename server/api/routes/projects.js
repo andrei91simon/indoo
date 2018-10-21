@@ -3,12 +3,39 @@ const router = express.Router();
 const mongoose = require("mongoose");
 const multer = require("multer");
 const Project = require("../models/project");
-const s3 = require("../../s3.js");
+//const s3 = require("../../s3.js");
 const Busboy = require('busboy');
 
 const fs = require('fs');
 const AWS = require('aws-sdk');
 
+
+const multerS3 = require('multer-s3');
+
+const s3 = new AWS.S3({
+    accessKeyId: process.env.S3_ACCESS_KEY_ID,
+    secretAccessKey: process.env.S3_SECRET_ACCESS_KEY
+});
+
+var upload = multer({
+  storage: multerS3({
+    s3: s3,
+    bucket: 'indoodesign',
+    contentType: multerS3.AUTO_CONTENT_TYPE,
+    metadata: function (req, file, cb) {
+      cb(null, {fieldName: file.fieldname});
+    },
+    key: function (req, file, cb) {
+      cb(null, file.originalname);
+    }
+  })
+});
+ 
+router.post('/uploadToS3', upload.array('photos', 30), function(req, res, next) {
+  res.send({"message": 'Successfully uploaded ' + req.files.length + ' files!'});
+})
+
+/*
 const storage = multer.diskStorage({
   destination: function(req, file, cb) {
     cb(null, './server/uploads/');
@@ -32,7 +59,7 @@ const upload = multer({
   limits: {
   },
   fileFilter: fileFilter
-});
+}); */
 
 router.get("/", (req, res, next) => {
 	Project.find()
@@ -54,7 +81,7 @@ router.get("/", (req, res, next) => {
 		});
 	});
 });
-
+/*
 router.post("/uploadPhoto", upload.single('photo'), (req, res, next) => {
 	res.status(200).json({});
 })
@@ -63,7 +90,7 @@ router.post("/uploadToS3", (req, res, next) => {
 	let fileName = req.body.filename;
 	s3("server/uploads/" + fileName);
 	res.status(200).json({});
-})
+}) */
 
 router.post("/", (req, res, next) => {
 
@@ -84,6 +111,7 @@ router.post("/", (req, res, next) => {
 		res.status(201).json({
 			message: "Created project successfully",
 			createdProject: {
+				_id: result._id,
 				title: result.title,
 				category: result.category,
 				location: result.location,
