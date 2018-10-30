@@ -1,8 +1,10 @@
 <div class="main d-flex">
 	<div class="logo-pictures-copyright d-flex flex-column">
 		<img class="logo" src="assets/indoo.design/logo.png" routerLink="/">
-		<div class="navigation-menu-phone pt-2 pr-4">
-			<a routerLink="/" href="">HOME -</a><a routerLink="/projects" href="">PROJECTS -</a><a routerLink="/projects/1" href="">APARTAMENT 028</a>
+		<div class="navigation-menu-phone titleclass2 pt-2 pr-4">
+			<span routerLink="/" href="">HOME -&nbsp;</span>
+			<span routerLink="/projects" href="">PROJECTS -&nbsp;</span>
+			<span routerLink="/projects/1" href="">APARTAMENT 028</span>
 		</div>
 		<div class="pictures d-flex flex-column pr-3">
 			<img *ngFor="let picture of project.photoUrls" (click)="changeImage(picture)" class="small-picture mb-3" src="{{picture}}">
@@ -13,7 +15,7 @@
 	</div>
 	<div class="right-side d-flex flex-column">
 		<div class="top-menu d-flex">
-			<span class="navigation-menu titleclass">
+			<span class="navigation-menu titleclass2">
 				<span routerLink="/">HOME</span>
 				<span class="separator">&nbsp;-&nbsp;</span>
 				<span routerLink="/projects">PROJECTS</span>

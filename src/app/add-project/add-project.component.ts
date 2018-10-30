@@ -19,8 +19,8 @@ export class AddProjectComponent implements OnInit {
 
   project: Project = {};
   previewPhotos: {file: File, preview?: string, index: number}[];
-  busy: Subscription;
   closeOnSave: boolean = false;
+  busy: any;
 
   @ViewChild(SortableComponent) sortableComponent: SortableComponent;
 
@@ -61,15 +61,13 @@ export class AddProjectComponent implements OnInit {
         this.project.photoUrls.push('https://s3.amazonaws.com/indoodesign/' + p.file.name);
         formData.append('photos', p.file);
       }
-      this.http.post<boolean>(`http://localhost:3000/projects/uploadToS3`, formData).subscribe(x => {
+      this.busy = this.http.post<boolean>(`http://localhost:3000/projects/uploadToS3`, formData).subscribe(x => {
         console.log("this is x", x);
         if (x) {
           this.http.patch<Project>(`http://localhost:3000/projects/${this.project._id}`, payload).subscribe((project: Project) => {
             if (!this.closeOnSave) {
               this.previewPhotos = [];
               this.loadProject();
-            } else {
-              this.router.navigate(['/projects']);
             }
           });
           return;
@@ -86,7 +84,7 @@ export class AddProjectComponent implements OnInit {
       formData.append('photos', p.file);
     }
     console.log('this is the formdata', formData);
-    this.http.post<boolean>(`http://localhost:3000/projects/uploadToS3`, formData).subscribe(x => {
+    this.busy = this.http.post<boolean>(`http://localhost:3000/projects/uploadToS3`, formData).subscribe(x => {
       console.log('this is x', x);
       if (x) {
         this.project.image = this.project.photoUrls[0];
@@ -94,8 +92,6 @@ export class AddProjectComponent implements OnInit {
           this.project._id = project._id;
           if (!this.closeOnSave) {
             this.loadProject();
-          } else {
-            this.router.navigate(['/projects']);
           }
         });
       } else {
@@ -107,7 +103,7 @@ export class AddProjectComponent implements OnInit {
 
   saveAndClose() {
     this.closeOnSave = true;
-    this.saveProject();
+    this.saveProject().then(x => this.router.navigate(['/projects']));
   }
 
   onDropHandler(event: any): void {

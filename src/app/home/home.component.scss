@@ -23,6 +23,7 @@
 }
 
 .links {
+	padding-top: 10px;
 	@include media-breakpoint-down(sm) {
 		flex-direction: row !important;
 	}
@@ -62,8 +63,8 @@
 }
 
 .logo {
-	max-width: 70px;
-	max-height: 40px;
+	width: 70px;
+	height: 50px;
 }
 
 .logo-links {
@@ -158,4 +159,12 @@ a {
     text-transform: uppercase;
     font-size: 8px;
     letter-spacing: 3px;
+}
+
+.titleclass2 {
+    font-family: Montserrat;
+    text-transform: lowercase;
+    font-size: 8px;
+    letter-spacing: 3px;
+    color: #808080;
 }
