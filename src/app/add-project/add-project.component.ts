@@ -12,7 +12,7 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 @Component({
   selector: 'app-add-project',
   templateUrl: './add-project.component.html',
-  styleUrls: ['./add-project.component.scss']
+  styleUrls: ['./add-project.component.scss', '../../../node_modules/angular2-busy/build/style/busy.css']
 })
 export class AddProjectComponent implements OnInit {
   componentName = 'AddProjectComponent';
@@ -68,6 +68,8 @@ export class AddProjectComponent implements OnInit {
             if (!this.closeOnSave) {
               this.previewPhotos = [];
               this.loadProject();
+            } else {
+              this.router.navigate(['/projects']);
             }
           });
           return;
@@ -92,6 +94,8 @@ export class AddProjectComponent implements OnInit {
           this.project._id = project._id;
           if (!this.closeOnSave) {
             this.loadProject();
+          } else {
+            this.router.navigate(['/projects']);
           }
         });
       } else {

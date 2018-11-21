@@ -22,6 +22,7 @@ var upload = multer({
     s3: s3,
     bucket: 'indoodesign',
     contentType: multerS3.AUTO_CONTENT_TYPE,
+    contentLength: 500000000,
     metadata: function (req, file, cb) {
       cb(null, {fieldName: file.fieldname});
     },

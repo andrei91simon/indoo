@@ -20,8 +20,8 @@ import { ProjectService } from './project.service';
 import { ProjectViewComponent } from './project-view/project-view.component';
 import { LoginComponent } from './login/login.component';
 import { AddProjectComponent } from './add-project/add-project.component';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {BusyModule} from 'angular2-busy';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BusyModule } from 'angular2-busy';
 
 @NgModule({
   declarations: [
