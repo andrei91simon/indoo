@@ -6,7 +6,7 @@
 .main {
 	width: 98vw;
 	height: 95vh;
-	padding: 30px 20px 0px 20px;
+	padding: 30px 10px 0px 30px;
 	justify-content: space-between;
 
 	@include media-breakpoint-down(sm) {
@@ -92,7 +92,6 @@
 .right-side {
 	max-width: 75vw;
 	height: 95vh;
-	margin: 0 auto;
 
 	@include media-breakpoint-down(sm) {
 		height: 100%;
