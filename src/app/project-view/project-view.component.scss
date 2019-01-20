@@ -4,9 +4,7 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
 
 .main {
-	width: 98vw;
-	height: 95vh;
-	padding: 30px 10px 0px 30px;
+	padding: 2.5vh 2.5vh 2.5vh 4vh;
 	justify-content: space-between;
 
 	@include media-breakpoint-down(sm) {
@@ -19,9 +17,9 @@
 
 .logo-pictures-copyright {
 	justify-content: space-between;
-	height: 95vh;
-	max-width: 13vw;
-	min-width: 12vw;
+	height: 94.7vh;
+	max-width: 100%;
+	padding-right: 4vh;
 
 	@include media-breakpoint-down(sm) {
 		height: 100%;
@@ -29,23 +27,21 @@
 		flex-direction: row !important;
 		justify-content: space-between;
 	}
+
+	@include media-breakpoint-up(xl) {
+		max-width: 18vw;
+	}
 }
 
 .logo {
-	width: 70px;
-	height: 50px;
-	margin-left: 10px;
-	@include media-breakpoint-down(sm) {
-	
-	}
+	height: 36px;
+	width: 60px;
 }
 
 .logo-menu {
 	justify-content: space-between;
 	
 	@include media-breakpoint-down(sm) {
-		width: 100%;
-		height: 70px;
 		top: 0;
 		position: fixed;
 		background: white;
@@ -55,6 +51,7 @@
 .pictures {
 	overflow-y: scroll;
 	height: 70%;
+	padding-right: 1.5vh;
     
 	@include media-breakpoint-down(sm) {
 		display: none !important;
@@ -90,8 +87,8 @@
 }
 
 .right-side {
-	max-width: 75vw;
-	height: 95vh;
+	display: flex !important;
+	justify-content: space-between;
 
 	@include media-breakpoint-down(sm) {
 		height: 100%;
@@ -102,19 +99,22 @@
 }
 
 .top-menu {
+	height: 5vh;
+	justify-content: space-between;
 	@include media-breakpoint-down(sm) {
 		flex-direction: column;
+	}
+	@include media-breakpoint-up(xl) {
+		height: 2.5vh;
 	}
 }
 
 .top-menu span span:hover {
-    font-weight: 600;
-    letter-spacing: 2px;
-    cursor: pointer;
+  font-weight: 600;
+  cursor: pointer;
 }
 
 .navigation-menu {
-	padding-left: 20px;
 
 	@include media-breakpoint-down(sm) {
 		display: none;
@@ -127,6 +127,7 @@ a {
 
 .photos-menu {
 	margin: auto;
+	margin-top: 0;
 
 	@include media-breakpoint-down(sm) {
 		padding-top: 40px;
@@ -134,27 +135,26 @@ a {
 	}
 }
 
+.photos-menu span span:hover {
+  font-weight: 600;
+  letter-spacing: 2px;
+  cursor: pointer;
+}
+
 .large-image {
-	max-width: 75vw;
 	max-height: 85vh;
 	object-fit: contain;
 
 	@include media-breakpoint-down(sm) {
 		flex-direction: column;
-		max-height: 100%;
-		min-width: 100%;
-		padding: 0 !important;
-		margin: 0 !important;
+		height: 100%;
+		width: 100%;
 		padding-bottom: 10px !important;
 	}
 }
 
 .social {
 	width: 100px;
-	margin-bottom: 5px;
-	justify-content: space-between;
-	position: fixed;
-	bottom: 10px;
 
 	@include media-breakpoint-down(sm) {
 		display: none !important;
@@ -174,6 +174,7 @@ a {
 .social-image {
 	max-height: 15px;
 	max-width: 15px;
+
 }
 
 .navigation-menu-phone {
@@ -188,12 +189,13 @@ a {
 }
 
 .copyright {
+	position: absolute;
+	bottom: 2.5vh;
+  font-size: 10px;
+  color: #808080;
 	@include media-breakpoint-down(sm) {
 		display: none;
 	}
-    font-size: 10px;
-    margin-bottom: 5px;
-    color: #808080;
 }
 
 .copyright-phone {
@@ -219,16 +221,16 @@ a {
 }
 
 .titleclass {
-    font-family: Montserrat;
-    text-transform: uppercase;
-    font-size: 8px;
-    letter-spacing: 3px;
+  font-family: Montserrat;
+  text-transform: uppercase;
+  font-size: 8px;
+  letter-spacing: 3px;
 }
 
 .titleclass2 {
-    font-family: Montserrat;
-    text-transform: lowercase;
-    font-size: 8px;
-    letter-spacing: 3px;
-    color: #808080 !important;
+  font-family: Montserrat Medium;
+  text-transform: uppercase;
+  font-size: 8px;
+  letter-spacing: 3px;
+  color: #282828;
 }

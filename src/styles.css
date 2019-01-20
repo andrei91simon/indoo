@@ -1,2 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~bootstrap/dist/css/bootstrap.min.css';
+
+.style1 {
+	font-family: Montserrat medium;
+	color: #282828;
+}
+
+.style2 {
+	font-family: PT Sans regular;
+	color: #8e8e8e;
+}

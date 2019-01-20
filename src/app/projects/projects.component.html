@@ -1,4 +1,4 @@
-<div class="main d-flex">
+<section class="main d-flex">
 	<div class="left-space d-flex flex-column flex-grow-1">
 		<div class="d-flex logo-menu">
 			<img class="logo" src="assets/indoo.design/logo.png" routerLink="/">
@@ -12,7 +12,7 @@
 		</div>
 	</div>
 	<div class="right-side d-flex flex-column">
-		<div class="top-menu mb-3 d-flex titleclass2">
+		<div class="top-menu d-flex titleclass2">
 			<span routerLink="/">Home -&nbsp;</span>
 			<span>Projects</span>
 		</div>
@@ -20,9 +20,9 @@
 			<app-project-preview *ngFor="let project of projects | async" [project]="project"></app-project-preview>
 		</div>
 		<div class="d-flex social mt-auto">
-			<img class="social-image" src="assets/indoo.design/icons/facebook.png">
-			<img class="social-image" src="assets/indoo.design/icons/instagram.png">
-			<img class="social-image" src="assets/indoo.design/icons/pinterest.png">
+			<a href="https://www.facebook.com/indoodesign/" target="_blank"><img class="social-image" src="assets/indoo.design/icons/facebook.png"></a>
+			<a href="https://www.instagram.com/indoodesign/" target="_blank"><img class="social-image" src="assets/indoo.design/icons/instagram.png"></a>
+			<a href="https://www.pinterest.com/indoodesign/" target="_blank"><img class="social-image" src="assets/indoo.design/icons/pinterest.png"></a>
 		</div>
 	</div>
-</div>
+</section>

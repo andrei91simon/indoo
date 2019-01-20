@@ -6,11 +6,12 @@
 			<span routerLink="/projects" href="">PROJECTS -&nbsp;</span>
 			<span routerLink="/projects/1" href="">APARTAMENT 028</span>
 		</div>
-		<div class="pictures d-flex flex-column pr-3">
-			<img *ngFor="let picture of project.photoUrls" (click)="changeImage(picture)" class="small-picture mb-3" src="{{picture}}">
+		<div class="pictures d-flex flex-column">
+			<img *ngFor="let picture of project.photoUrls" (click)="changeImage(picture)" class="small-picture mt-3" src="{{picture}}">
 		</div>
+		<div>&nbsp;</div>
 		<div class="copyright">
-			<p>© indoo.design</p>
+			<span>© indoo.design</span>
 		</div>
 	</div>
 	<div class="right-side d-flex flex-column">
@@ -20,26 +21,31 @@
 				<span class="separator">&nbsp;-&nbsp;</span>
 				<span routerLink="/projects">PROJECTS</span>
 				<span class="separator">&nbsp;-&nbsp;</span>
-				<span>APARTAMENT 028</span>
+				<span>{{project.title}}</span>
 			</span>
-			<span class="photos-menu pr-4 titleclass2"> photos | renderings | all </span>
+			<!-- filtru de poze -->
+		<!--	<span class="photos-menu titleclass2">
+				<span>photos</span>
+				<span>|</span>
+				<span>renderings</span>
+				<span>|</span>
+				<span>all</span>
+			</span> -->
 		</div>
-		<div class="large-image pt-4 pl-3 pr-3 pb-3 align-self-end">
-			<img class="large-image pr-2" src="{{project.image}}">
-			<div class="social d-flex pt-3">
-				<img class="social-image" src="assets/indoo.design/icons/facebook.png">
-				<img class="social-image" src="assets/indoo.design/icons/instagram.png">
-				<img class="social-image" src="assets/indoo.design/icons/pinterest.png">
-			</div>
+		<img class="large-image" src="{{project.image}}">
+		<div class="social">
+			<a href="https://www.facebook.com/indoodesign/" target="_blank"><img class="social-image" src="assets/indoo.design/icons/facebook.png"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<a href="https://www.instagram.com/indoodesign/" target="_blank"><img class="social-image" src="assets/indoo.design/icons/instagram.png"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<a href="https://www.pinterest.com/indoodesign/" target="_blank"><img class="social-image" src="assets/indoo.design/icons/pinterest.png"></a>
 		</div>
 	</div>
 	<div class="pictures-phone d-flex pb-2">
 		<img *ngFor="let picture of project.photoUrls" (click)="changeImage(picture)" class="small-picture pr-3" src="{{picture}}">
 	</div>
 	<div class="social-phone d-flex pt-5">
-		<img class="social-image" src="assets/indoo.design/icons/facebook.png">
-		<img class="social-image" src="assets/indoo.design/icons/instagram.png">
-		<img class="social-image" src="assets/indoo.design/icons/pinterest.png">
+		<a href="https://www.facebook.com/indoodesign/" target="_blank"><img class="social-image" src="assets/indoo.design/icons/facebook.png"></a>
+		<a href="https://www.instagram.com/indoodesign/" target="_blank"><img class="social-image" src="assets/indoo.design/icons/instagram.png"></a>
+		<a href="https://www.pinterest.com/indoodesign/" target="_blank"><img class="social-image" src="assets/indoo.design/icons/pinterest.png"></a>
 	</div>
 
 	<div class="copyright-phone pt-5">

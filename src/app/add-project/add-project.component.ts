@@ -61,10 +61,10 @@ export class AddProjectComponent implements OnInit {
         this.project.photoUrls.push('https://s3.amazonaws.com/indoodesign/' + p.file.name);
         formData.append('photos', p.file);
       }
-      this.busy = this.http.post<boolean>(`http://localhost:3000/projects/uploadToS3`, formData).subscribe(x => {
+      this.busy = this.http.post<boolean>(`https://pure-bastion-78866.herokuapp.com/projects/uploadToS3`, formData).subscribe(x => {
         console.log("this is x", x);
         if (x) {
-          this.http.patch<Project>(`http://localhost:3000/projects/${this.project._id}`, payload).subscribe((project: Project) => {
+          this.http.patch<Project>(`https://pure-bastion-78866.herokuapp.com/projects/${this.project._id}`, payload).subscribe((project: Project) => {
             if (!this.closeOnSave) {
               this.previewPhotos = [];
               this.loadProject();
@@ -86,11 +86,11 @@ export class AddProjectComponent implements OnInit {
       formData.append('photos', p.file);
     }
     console.log('this is the formdata', formData);
-    this.busy = this.http.post<boolean>(`http://localhost:3000/projects/uploadToS3`, formData).subscribe(x => {
+    this.busy = this.http.post<boolean>(`https://pure-bastion-78866.herokuapp.com/projects/uploadToS3`, formData).subscribe(x => {
       console.log('this is x', x);
       if (x) {
         this.project.image = this.project.photoUrls[0];
-        this.http.post<Project>(`http://localhost:3000/projects`, this.project).subscribe((project: Project) => {
+        this.http.post<Project>(`https://pure-bastion-78866.herokuapp.com/projects`, this.project).subscribe((project: Project) => {
           this.project._id = project._id;
           if (!this.closeOnSave) {
             this.loadProject();

@@ -4,10 +4,9 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
 
 .main {
-	width: 99.5vw;
-	height: 98vh;
-	padding:30px 10px 0px 30px;
 	justify-content: space-between;
+	max-width: 100%;
+	padding: 2.5vh 2.5vh 2.5vh 4vh;
 
 	@include media-breakpoint-down(sm) {
 		flex-direction: column;
@@ -36,7 +35,6 @@
 
 .links p:hover {
     font-weight: 600;
-    letter-spacing: 2px;
     cursor: pointer;
 }
 
@@ -48,8 +46,8 @@
 }
 
 .large-image {
-	max-width: 78vw;
-	max-height: 92vh;
+	object-fit: contain;
+	max-height: 94.7vh;
 
 	@include media-breakpoint-down(sm) {
 		max-height: 100%;
@@ -63,8 +61,8 @@
 }
 
 .logo {
-	width: 70px;
-	height: 50px;
+	height: 36px;
+	width: 60px;
 }
 
 .logo-links {
@@ -85,7 +83,9 @@
 }
 
 .copyright-social {
+	width: 100%;
 	justify-content: space-between;
+	bottom: 2.5vh;
 	font-size: 9px;
 
 	@include media-breakpoint-down(md) {
@@ -104,6 +104,7 @@
 }
 
 .copyright {
+
 	@include media-breakpoint-down(md) {
 		padding-left: 20px;
 	}
@@ -111,8 +112,9 @@
 	@include media-breakpoint-down(sm) {
 		padding-left: 0;
 	} 
-    color:#808080;
-    font-size:10px;
+  
+  color: #808080;
+  font-size: 10px;
 }
 
 .social {
@@ -155,16 +157,16 @@ a {
 }
 
 .titleclass {
-    font-family: Montserrat;
-    text-transform: uppercase;
-    font-size: 8px;
-    letter-spacing: 3px;
+  font-family: Montserrat;
+  text-transform: uppercase;
+  font-size: 8px;
+  letter-spacing: 3px;
 }
 
 .titleclass2 {
-    font-family: Montserrat;
-    text-transform: lowercase;
-    font-size: 8px;
-    letter-spacing: 3px;
-    color: #808080;
+  font-family: Montserrat Medium;
+  text-transform: uppercase;
+  font-size: 8px;
+  letter-spacing: 3px;
+  color: #282828;
 }

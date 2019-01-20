@@ -108,11 +108,11 @@ export class ProjectService {
   }
 
   getProjects(): Observable<Project[]> {
-    return this.http.get<Project[]>(`http://localhost:3000/projects`).shareReplay();
+    return this.http.get<Project[]>(`https://pure-bastion-78866.herokuapp.com/projects`).shareReplay();
   }
 
   getProjectById(id: string): Observable<Project> {
-    return this.http.get<Project>(`http://localhost:3000/projects/${id}`).shareReplay();
+    return this.http.get<Project>(`https://pure-bastion-78866.herokuapp.com/projects/${id}`).shareReplay();
   }
 
   addProject(project: Project): Observable<Project> {
@@ -120,7 +120,7 @@ export class ProjectService {
   }
 
   deleteProject(id: string): Observable<Project> {
-    return this.http.delete<Project>(`http://localhost:3000/projects/${id}`);
+    return this.http.delete<Project>(`https://pure-bastion-78866.herokuapp.com/projects/${id}`);
   }
 }
 
